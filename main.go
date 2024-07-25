@@ -20,12 +20,10 @@ func main() {
 
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
 		original := r.FormValue("url")
-		shortened := shortenurl.ShortenURL(original)
+		shortened := shortenurl.CreateOrRetrieveShortenedURL(db, original)
 		fmt.Println(shortened)
 
-		db.Create(&shortenurl.URL{Original: original, Shortened: shortened})
-
-		fmt.Fprintf(w, `{"shortened": "%s"}`, shortened)
+		fmt.Fprintf(w, `"shortened_URL": "%s"`, shortened)
 	})
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		shortenurl.RedirectURL(db, w, r)
