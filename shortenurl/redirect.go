@@ -2,16 +2,17 @@ package shortenurl
 
 import (
 	"net/http"
+
 	"gorm.io/gorm"
 )
 
 type URL struct {
-	ID 				uint `gorm:"primaryKey"`
-	OriginalURL 	string  `gorm:"not null"`
-	ShortenedURL 	string	`gorm:"not null"`
+	ID           uint   `gorm:"primary_key"`
+	OriginalURL  string `gorm:"not null"`
+	ShortenedURL string `gorm:"not null"`
 }
 
-func RedirectURL(db *gorm.DB ,w http.ResponseWriter, r *http.Request) {
+func RedirectURL(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	// get the shortened URL from the request
 	// query the database for the original URL
 	// redirect the user to the original URL
