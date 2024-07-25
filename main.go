@@ -23,7 +23,7 @@ func main() {
 		shortened := shortenurl.ShortenURL(original)
 		fmt.Println(shortened)
 
-		db.Create(&shortenurl.URL{OriginalURL: original, ShortenedURL: shortened})
+		db.Create(&shortenurl.URL{Original: original, Shortened: shortened})
 
 		fmt.Fprintf(w, `{"shortened": "%s"}`, shortened)
 	})

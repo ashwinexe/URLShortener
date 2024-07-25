@@ -7,9 +7,9 @@ import (
 )
 
 type URL struct {
-	ID           uint   `gorm:"primary_key"`
-	OriginalURL  string `gorm:"not null"`
-	ShortenedURL string `gorm:"not null"`
+	ID        uint   `gorm:"primary_key"`
+	Original  string `gorm:"not null"`
+	Shortened string `gorm:"not null"`
 }
 
 func RedirectURL(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
@@ -20,5 +20,5 @@ func RedirectURL(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	var url URL
 	shortened := "http://localhost:8080/" + id
 	db.First(&url, "shortened = ?", shortened)
-	http.Redirect(w, r, url.OriginalURL, http.StatusFound)
+	http.Redirect(w, r, url.Original, http.StatusFound)
 }
