@@ -11,6 +11,8 @@ docker run -p 8080:8080 ashwinexe/urlshortener
 
 ## How to shorten a URL
 
+> Note: If the URLs are not being stored properly or top-domains are not being updated, you may have an existing db file, delete it and let the program create a fresh one.
+
 ### Using command line
 
 To shorten a link make a **POST** reqeuest to `/shorten`
@@ -29,7 +31,7 @@ curl http://localhost:8080/topdomains
 2. Set it request to `GET`
 3. Paste the URL `http://localhost:8080/shorten`
 4. Set **Body** of request to **Content type:** *application/x-www-form-urlencoded*
-5. Put the *parameter* as `url` and *value* as the original link you want to shorten. (example: `http://github.com/ashwinexe)
+5. Put the *parameter* as `url` and *value* as the original link you want to shorten. (example: `http://github.com/ashwinexe`)
 
 ## Prerequisites
 - Go
