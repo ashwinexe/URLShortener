@@ -1,5 +1,35 @@
-# URLShortner
-A simple URL Shortner made in GO and GORM.
+# URLShortener
+A simple URL Shortener made in GO and GORM.
+
+Try it out in ![https://hub.docker.com/r/ashwinexe/urlshortener](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white): 
+
+```
+docker pull ashwinexe/urlshortener
+
+docker run -p 8080:8080 ashwinexe/urlshortener
+```
+
+## How to shorten a URL
+
+### Using command line
+
+To shorten a link make a **POST** reqeuest to `/shorten`
+```
+curl -X POST -d "url=http://youtube.com" http://localhost:8080/shorten
+```
+
+To check top 3 domains shortened make a **GET** request to `/topdomains`
+```
+curl http://localhost:8080/topdomains
+```
+
+### Using API testing tools
+#### [Hoppscotch](https://hoppscotch.io/) or [Postman](https://www.postman.com/)
+1. Create a new REST API tab.
+2. Set it request to `GET`
+3. Paste the URL `http://localhost:8080/shorten`
+4. Set **Body** of request to **Content type:** *application/x-www-form-urlencoded*
+5. Put the *parameter* as `url` and *value* as the original link you want to shorten. (example: `http://github.com/ashwinexe)
 
 ## Prerequisites
 - Go

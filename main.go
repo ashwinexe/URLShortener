@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	// Connect to the database
 	db, err := shortenurl.ConnectDb()
 	if err != nil {
 		panic("failed to connect database")
@@ -18,6 +19,7 @@ func main() {
 
 	db.AutoMigrate(&shortenurl.URL{})
 
+	// Create a new shortened URL or retrieve an existing one if it exists in DB
 	http.HandleFunc("/shorten", func(w http.ResponseWriter, r *http.Request) {
 		original := r.FormValue("url")
 		shortened := shortenurl.CreateOrRetrieveShortenedURL(db, original)
@@ -28,6 +30,7 @@ func main() {
 		shortenurl.RedirectURL(db, w, r)
 	})
 
+	// Count the latest shortened URL and return the top 3 domains
 	http.HandleFunc("/topdomains", func(w http.ResponseWriter, r *http.Request) {
 		domains, err := shortenurl.GetTopDomains(db)
 		if err != nil {
