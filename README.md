@@ -1,7 +1,7 @@
 # URLShortener
 A simple URL Shortener made in GO and GORM.
 
-Try it out in ![https://hub.docker.com/r/ashwinexe/urlshortener](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white): 
+Try it out in ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white): https://hub.docker.com/r/ashwinexe/urlshortener
 
 ```
 docker pull ashwinexe/urlshortener
